@@ -1,0 +1,8 @@
+{
+  "extensionName": {
+    "message": "Slack Hebrew RTL Lite"
+  },
+  "extensionDescription": {
+    "message": "Lightweight right-to-left Hebrew support for Slack."
+  }
+}

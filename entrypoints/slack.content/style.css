@@ -1,0 +1,232 @@
+.hebrew,
+.hebrew .p-rich_text_block,
+.partofhebrew,
+.partofhebrew .p-rich_text_block {
+  font-family:
+    "Noto Sans Hebrew", "Noto Sans", Slack-Lato, Slack-Fractions, appleLogo,
+    sans-serif !important;
+}
+
+.c-virtual_list__item.hebrew .p-rich_text_block,
+.hebrew.ql-editor,
+.c-focus_manage_list__item.hebrew .p-rich_text_block,
+.c-focus_manage_list__item.hebrew .c-search_message__body,
+.c-input_text.c-advanced_search_modal__select.hebrew,
+#c-search_autocomplete__suggestion_list.hebrew,
+.c-search_autocomplete__suggestion_list.hebrew,
+.p-quip_embed_channel_canvas article.document-content .section.hebrew {
+  direction: rtl;
+  text-align: right;
+}
+
+.c-search__input_box__container>.c-basic_container__body.hebrew {
+  flex-direction: row-reverse;
+}
+
+#c-search_autocomplete__suggestion_list.hebrew .c-avatar,
+.c-search_autocomplete__suggestion_list.hebrew .c-avatar,
+#c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-file_entity__icon,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-file_entity__icon,
+#c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-member__hidden-user-icon,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-member__hidden-user-icon,
+#c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-modal_entity__icon,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-modal_entity__icon,
+#c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-page_view_entity__icon,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-page_view_entity__icon,
+#c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-search_autocomplete__record_icon,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-search_autocomplete__record_icon,
+#c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-search_autocomplete__sales_icon,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-search_autocomplete__sales_icon,
+#c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-search_autocomplete__workflow__icon,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-search_autocomplete__workflow__icon,
+#c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-search_query_entity__icon,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-search_query_entity__icon,
+#c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-team_entity__icon,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .c-team_entity__icon,
+#c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .p-history_menu__entry__icon,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_autocomplete__suggestion_item .p-history_menu__entry__icon {
+  margin-right: 0 !important;
+  margin-left: 12px;
+}
+
+#c-search_autocomplete__suggestion_list.hebrew .c-search_query_entity__token,
+.c-search_autocomplete__suggestion_list.hebrew .c-search_query_entity__token {
+  direction: ltr !important;
+}
+
+.hebrew .c-mrkdwn__broadcast--mention,
+.hebrew .c-mrkdwn__user_group--link,
+.hebrew .c-mrkdwn__user_group--mention,
+.hebrew .c-timestamp__label,
+.hebrew .c-message__sender {
+  display: inline-block;
+  direction: ltr !important;
+}
+
+.hebrew.c-message_attachment,
+.hebrew .c-message_kit__gutter,
+.hebrew .c-message_group {
+  direction: rtl;
+}
+
+.p-message_input_field {
+  padding-right: 43px !important;
+}
+
+.c-virtual_list__item.hebrew .p-rich_text_block ol>li::before,
+.c-focus_manage_list__item.hebrew .p-rich_text_block ol>li::before,
+.c-virtual_list__item.hebrew .p-rich_text_block ul>li::before,
+.c-focus_manage_list__item.hebrew .p-rich_text_block ul>li::before {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.c-texty_input_unstyled__container .hebrew.ql-editor ol>li,
+.c-virtual_list__item.hebrew .p-rich_text_block ol>li,
+.c-focus_manage_list__item.hebrew .p-rich_text_block ol>li,
+.c-texty_input_unstyled__container .hebrew.ql-editor ul:not([data-checked])>li,
+.c-virtual_list__item.hebrew .p-rich_text_block ul:not([data-checked])>li,
+.c-focus_manage_list__item.hebrew .p-rich_text_block ul:not([data-checked])>li {
+  margin-left: 0;
+}
+
+.hebrew blockquote {
+  padding-right: 16px !important;
+}
+
+.hebrew blockquote::before {
+  right: 0;
+}
+
+.c-texty_input_unstyled__container .hebrew.ql-editor ol>li::before,
+.c-texty_input_unstyled__container .hebrew.ql-editor ul>li::before {
+  margin-left: 0 !important;
+  left: auto !important;
+  right: -3px;
+  margin-right: -24px !important;
+}
+
+.c-texty_input_unstyled__container .hebrew.ql-editor ul:not([data-checked])>li,
+.c-texty_input_unstyled__container .hebrew.ql-editor ol:not([data-checked])>li {
+  margin-left: auto;
+  margin-right: 26px;
+}
+
+.c-texty_input_unstyled__container .hebrew.ql-editor .ql-code-block {
+  margin-right: 11px !important;
+  margin-left: auto !important;
+}
+
+.c-texty_input_unstyled__container .ql-editor.hebrew .ql-code-block::before {
+  right: -12px !important;
+}
+
+.c-texty_input_unstyled__container .ql-editor.hebrew ol[class*="ql-border-"]::before,
+.c-texty_input_unstyled__container .ql-editor.hebrew ul[class*="ql-border-"]::before {
+  right: 0 !important;
+}
+
+.hebrew .p-rich_text_block .c-mrkdwn__pre {
+  margin-right: 13px;
+  padding-right: 13px;
+  margin-left: auto !important;
+  overflow-y: initial !important;
+}
+
+.hebrew .p-rich_text_block .c-mrkdwn__pre::before {
+  left: 0 !important;
+  margin-left: 0 !important;
+  margin-right: -13px;
+  right: -1px;
+}
+
+.hebrew .c-message__actions {
+  left: 17px !important;
+  right: auto !important;
+}
+
+.hebrew .c-search_message__actions {
+  left: 0 !important;
+  right: auto !important;
+}
+
+.c-texty_input_unstyled__container .ql-editor.hebrew ol[class*="ql-border-"],
+.c-texty_input_unstyled__container .ql-editor.hebrew ul[class*="ql-border-"] {
+  padding-right: 11px !important;
+  padding-left: 0 !important;
+}
+
+.hebrew .c-card_container__actions--position_inset {
+  left: 12px !important;
+  right: auto !important;
+}
+
+.hebrew .c-message_kit__gutter__left,
+.hebrew .c-message_kit__labels__text,
+.hebrew .c-message_kit__labels__icon,
+.hebrew .c-search_message__gutter {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.hebrew .c-search_message__gutter {
+  float: right;
+  padding-right: 0;
+  padding-left: 8px;
+}
+
+.hebrew .c-message_kit__labels__label {
+  direction: rtl;
+  padding-right: 20px;
+  padding-left: 0;
+}
+
+.hebrew .c-message_kit__labels__icon,
+.hebrew .c-message_kit__gutter--compact .p-message_pane_message__compact_timestamp {
+  text-align: left;
+}
+
+.hebrew.c-message_attachment .c-message_attachment__author_icon {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.hebrew .c-message_kit__gutter--compact .c-message_kit__gutter__right .c-message_kit__indent {
+  padding-right: 8px;
+}
+
+.hebrew .c-message_kit__gutter--compact .c-message__sender {
+  margin-right: -8px;
+  margin-left: 0;
+}
+
+.hebrew .c-message_kit__thread_message .c-message_kit__gutter__right {
+  padding-left: 0;
+  padding-right: 8px;
+}
+
+.hebrew .p-drafts_page__draft_header {
+  flex-direction: row-reverse;
+}
+
+.c-search__input_box__container .c-basic_container__body.hebrew .c-search__input_box__icon {
+  margin-left: 12px;
+  margin-right: 28px;
+}
+
+.hebrew .c-reaction .c-emoji:not(:last-child) {
+  margin-right: 0;
+  margin-left: 2px;
+}
+
+.hebrew .c-message__editor,
+.hebrew .p-deprecated_channel_name,
+.hebrew .c-member_slug--link {
+  direction: ltr !important;
+}
+
+.hebrew .c-message__reply_count,
+.hebrew .c-message__reply_bar_last_reply {
+  margin-right: 3px;
+  direction: ltr;
+}

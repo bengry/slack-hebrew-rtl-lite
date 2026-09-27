@@ -1,6 +1,7 @@
 import type { ContentScriptContext } from "wxt/utils/content-script-context";
 import type { Direction } from "./direction";
 import { applyAutoMarks, COMPOSER, forcedDirection, lineAt, toggleMark } from "./marks";
+import { attachTooltip } from "./tooltip";
 
 const TOOLBAR = 'div[role="toolbar"].c-wysiwyg_container__formatting';
 const BUTTON_GROUP = "rtl-lite-dir-buttons";
@@ -15,7 +16,10 @@ export function installComposer(ctx: ContentScriptContext): void {
 
 export function injectToolbars(): void {
   for (const toolbar of document.querySelectorAll(TOOLBAR)) {
-    if (!toolbar.querySelector(`.${BUTTON_GROUP}`)) toolbar.append(createButtons());
+    if (toolbar.querySelector(`.${BUTTON_GROUP}`)) continue;
+    // Next to Slack's own formatting buttons; the toolbar root would push them to the far edge.
+    const host = toolbar.querySelector("button[data-format]")?.parentElement ?? toolbar;
+    host.append(createButtons());
   }
 }
 
@@ -45,21 +49,51 @@ function autocompleteOpen(editor: Element): boolean {
   );
 }
 
+// Drawn on Slack's 20x20 icon grid with its 1.5 round-capped strokes: aligned text lines + direction arrow.
+const ICON_PATHS: Record<Direction, string> = {
+  ltr: "M2.75 3.25h14.5M2.75 7.75h9.5M2.75 15.25h14M14 12.5l2.75 2.75L14 18",
+  rtl: "M17.25 3.25H2.75M17.25 7.75h-9.5M17.25 15.25h-14M6 12.5l-2.75 2.75L6 18",
+};
+// Slack's own toolbar button classes, so size, hover, pressed state and theme match its buttons.
+const SLACK_BUTTON_CLASSES =
+  "c-button-unstyled c-icon_button c-icon_button--size_smedium p-composer__button p-composer__button--composer_ia p-composer__selection_button p-composer__button--sticky c-icon_button--default";
+
 function createButtons(): HTMLElement {
   const group = document.createElement("span");
   group.className = BUTTON_GROUP;
+  const separator = document.createElement("span");
+  separator.className = "p-composer__separator";
   group.append(
-    createButton("ltr", "LTR", "Force line left-to-right (Ctrl+[)"),
-    createButton("rtl", "RTL", "Force line right-to-left (Ctrl+])"),
+    separator,
+    createButton("ltr", "Left-to-right line", "["),
+    createButton("rtl", "Right-to-left line", "]"),
   );
   return group;
 }
 
-function createButton(direction: Direction, label: string, title: string): HTMLButtonElement {
+function createIcon(direction: Direction): SVGSVGElement {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 20 20");
+  svg.setAttribute("aria-hidden", "true");
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", ICON_PATHS[direction]);
+  path.setAttribute("fill", "none");
+  path.setAttribute("stroke", "currentColor");
+  path.setAttribute("stroke-width", "1.5");
+  path.setAttribute("stroke-linecap", "round");
+  path.setAttribute("stroke-linejoin", "round");
+  svg.append(path);
+  return svg;
+}
+
+function createButton(direction: Direction, label: string, key: string): HTMLButtonElement {
   const button = document.createElement("button");
   button.type = "button";
-  button.textContent = label;
-  button.title = title;
+  button.className = SLACK_BUTTON_CLASSES;
+  button.append(createIcon(direction));
+  button.setAttribute("aria-label", label);
+  button.setAttribute("aria-keyshortcuts", `Control+${key}`);
+  attachTooltip(button, label, key);
   button.dataset.rtlLiteDirection = direction;
   button.setAttribute("aria-pressed", "false");
   // Keeps focus and the caret in the editor on mouse clicks.

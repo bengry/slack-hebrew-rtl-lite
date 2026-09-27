@@ -71,32 +71,39 @@
 }
 
 /* Direction-mark buttons in the composer formatting toolbar. */
+/* Buttons carry Slack's own classes; the group only needs to stay out of the toolbar's flex layout. */
 .rtl-lite-dir-buttons {
-  display: inline-flex;
-  gap: 2px;
-  margin-inline-start: 4px;
+  display: contents;
 
-  & button {
-    padding: 0 6px;
-    border: 0;
+  /* Slack sizes its own icons via a hashed attribute; size ours explicitly. */
+  & svg {
+    inline-size: 18px;
+    block-size: 18px;
+  }
+}
+
+/* Tip box comes from Slack's c-tooltip__tip classes; key chips copy its hashed-class styles. */
+.c-tooltip__tip.rtl-lite-tooltip {
+  display: grid;
+  justify-items: center;
+}
+
+.rtl-lite-tooltip__keys {
+  display: flex;
+  gap: 4px;
+  margin-block-start: 4px;
+
+  & kbd {
+    display: grid;
+    place-items: center;
+    min-inline-size: 20px;
+    block-size: 20px;
+    padding: 0 4px;
     border-radius: 4px;
-    background: none;
-    color: inherit;
-    font: inherit;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 28px;
-    cursor: pointer;
-    opacity: 0.7;
-  }
-
-  & button:hover {
-    opacity: 1;
-    background: rgb(128 128 128 / 0.15);
-  }
-
-  & button[aria-pressed="true"] {
-    opacity: 1;
-    background: rgb(128 128 128 / 0.3);
+    background: rgb(0 0 0);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 13px;
   }
 }

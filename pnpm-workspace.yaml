@@ -1,3 +1,5 @@
 allowBuilds:
   esbuild: true
   spawn-sync: true
+# Only install versions published at least 3 days ago (value in minutes).
+minimumReleaseAge: 4320

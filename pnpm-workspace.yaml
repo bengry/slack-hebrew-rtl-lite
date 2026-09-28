@@ -1,6 +1,7 @@
 allowBuilds:
   esbuild: true
   spawn-sync: true
+# Temporary: vite-plus 1.0.0 (published 2026-09-28) is newer than pnpm's release-age window; remove once it has aged past it.
 minimumReleaseAgeExclude:
   - '@voidzero-dev/vite-plus-core@1.0.0'
   - '@voidzero-dev/vite-plus-darwin-arm64@1.0.0'

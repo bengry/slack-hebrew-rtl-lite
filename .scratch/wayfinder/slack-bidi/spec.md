@@ -80,7 +80,7 @@ Slack keeps RLM/LRM byte-exact through send, render and edit. ([Slack preserves 
 - One MutationObserver on `document.body` (childList, subtree, characterData). Batch per animation frame. Process only added or changed subtrees. The current `scheduleScan` scoping approach is a reference.
 - Idempotent: recompute only when a container's text changed, tracked with a data attribute holding a text hash. Ignore mutations to the extension's own attributes.
 - Runs in the content script's isolated world. The DOM and `execCommand` are shared with the page, so no main-world script is needed unless a prototype shows otherwise.
-- Performance: a scan must not add a long task (>50 ms) on a channel with 500 rendered messages. `scripts/benchmark-dom-scan.mjs` is the harness.
+- Performance: a scan must not add a long task (>50 ms) on a channel with 500 rendered messages. `entrypoints/slack.content/perf.test.ts` checks render plus forced layout in real Chromium against 2x that budget.
 
 ## Acceptance
 

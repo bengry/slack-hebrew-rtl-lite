@@ -40,6 +40,12 @@ Create a distributable zip:
 vp run zip
 ```
 
+Run tests (Vitest browser mode, headless Chromium):
+
+```sh
+vp test
+```
+
 Check formatting:
 
 ```sh
@@ -62,7 +68,7 @@ vp fmt .
 - `entrypoints/slack.content/composer.ts` handles the shortcuts, the toolbar buttons and the on-send hook.
 - `entrypoints/slack.content/copy.ts` strips direction marks when copying messages.
 - `entrypoints/slack.content/style.css` holds the per-line, list, quote, island and composer rules.
-- `scripts/check-direction.mjs` self-checks the direction rule (`node scripts/check-direction.mjs`).
+- `entrypoints/slack.content/direction.test.ts`, `render.test.ts` and `marks.test.ts` cover the direction rule, message/composer rendering and mark insertion (`vp test`).
 - `public/_locales/` contains localized manifest strings.
 - `wxt.config.ts` defines extension manifest metadata.
 

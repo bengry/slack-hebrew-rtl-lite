@@ -5,3 +5,4 @@ dist
 .playwright-cli
 .claude
 .vitest
+.env.submit

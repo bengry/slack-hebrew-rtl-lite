@@ -299,3 +299,107 @@ describe("rich message: lists, quote, code, mention", () => {
     expect(breakSection.hasAttribute("dir")).toBe(false);
   });
 });
+
+const ALIGN_ATTRIBUTE = "data-rtl-lite-align";
+
+/** Renders a one-item Hebrew bullet list and a Hebrew quote. */
+function renderListAndQuote(): { item: HTMLElement; quote: HTMLElement } {
+  const block = document.createElement("div");
+  block.className = "p-rich_text_block";
+  const list = document.createElement("ul");
+  list.className = "p-rich_text_list p-rich_text_list__bullet";
+  const item = document.createElement("li");
+  item.textContent = "פריט ראשון";
+  list.append(item);
+  const quote = document.createElement("blockquote");
+  quote.className = "c-mrkdwn__quote";
+  quote.textContent = "ציטוט בעברית לבדיקה";
+  block.append(list, quote);
+  root.append(block);
+  renderWithin(root);
+  return { item, quote };
+}
+
+describe("auto alignment", () => {
+  afterEach(() => {
+    document.documentElement.removeAttribute(ALIGN_ATTRIBUTE);
+  });
+
+  it("RTL list items and quotes still move the marker and bar to their right once the setting loads", () => {
+    document.documentElement.setAttribute(ALIGN_ATTRIBUTE, "auto");
+    const { item, quote } = renderListAndQuote();
+
+    expect(getComputedStyle(item).marginRight).toBe("28px");
+    expect(getComputedStyle(quote).paddingRight).toBe("16px");
+  });
+});
+
+describe("left alignment", () => {
+  const T2 = ["סיכום הפגישה:", "We agreed to ship on Monday, pending QA.", "תודה לכולם!"];
+
+  beforeEach(() => {
+    document.documentElement.setAttribute(ALIGN_ATTRIBUTE, "left");
+  });
+
+  afterEach(() => {
+    document.documentElement.removeAttribute(ALIGN_ATTRIBUTE);
+  });
+
+  /** A line's rendered direction from the order of its first and last characters; asserts it starts at the left edge. */
+  function leftAlignedDirection(container: Element, lineNodes: Node[]): Direction {
+    const textNodes = lineNodes.flatMap((node) => collectTextNodes(node));
+    const first = findVisibleChar(textNodes, false);
+    const last = findVisibleChar(textNodes, true);
+    if (!first || !last) throw new Error("line has no visible character to measure");
+    const firstRect = charRect(first.node, first.offset);
+    const lastRect = charRect(last.node, last.offset);
+    const leftmost = Math.min(firstRect.left, lastRect.left);
+    expect(leftmost - container.getBoundingClientRect().left).toBeLessThan(1);
+    return firstRect.left > lastRect.left ? "rtl" : "ltr";
+  }
+
+  it("message lines keep their direction but all start at the left edge", () => {
+    const { block, section } = buildMessage(T2);
+    root.append(block);
+    renderWithin(root);
+
+    const directions = splitLines(section).map((line) => leftAlignedDirection(section, line));
+    expect(directions).toEqual(["rtl", "ltr", "rtl"]);
+  });
+
+  it("a single-line RTL message keeps dir=rtl but starts at the left edge", () => {
+    const { block, section } = buildMessage(["PR #123 עודכן, תבדוק בבקשה מתי שיש לך זמן."]);
+    root.append(block);
+    renderWithin(root);
+
+    expect(section.dir).toBe("rtl");
+    expect(leftAlignedDirection(section, Array.from(section.childNodes))).toBe("rtl");
+  });
+
+  it("composer lines keep their direction but all start at the left edge", () => {
+    const editor = document.createElement("div");
+    editor.className = "ql-editor";
+    editor.contentEditable = "true";
+    for (const line of T2) {
+      const p = document.createElement("p");
+      p.textContent = line;
+      editor.append(p);
+    }
+    root.append(editor);
+
+    const directions = Array.from(editor.querySelectorAll("p")).map((p) =>
+      leftAlignedDirection(p, Array.from(p.childNodes)),
+    );
+    expect(directions).toEqual(["rtl", "ltr", "rtl"]);
+  });
+
+  it("RTL list items and quotes keep Slack's left-side layout", () => {
+    const { item, quote } = renderListAndQuote();
+
+    expect(item.dir).toBe("rtl");
+    expect(getComputedStyle(item).marginRight).toBe("0px");
+    expect(getComputedStyle(item, "::before").float).toBe("left");
+    expect(quote.dir).toBe("rtl");
+    expect(getComputedStyle(quote).paddingRight).toBe("0px");
+  });
+});

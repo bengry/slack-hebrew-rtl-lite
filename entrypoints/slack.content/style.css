@@ -15,24 +15,39 @@
   unicode-bidi: plaintext;
 }
 
-/* Lists and quotes: marker and bar follow the item's side. */
-.p-rich_text_list > li[dir="rtl"] {
-  margin-left: 0;
-  margin-inline-start: var(--rtl-lite-list-indent);
-
-  &::before {
+/* Lists and quotes: marker and bar follow the item's side. Left alignment keeps Slack's own left-side layout instead. */
+/* :not() rather than ="auto", so the default also applies before the setting loads and sets the attribute. */
+:root:not([data-rtl-lite-align="left"]) {
+  .p-rich_text_list > li[dir="rtl"] {
     margin-left: 0;
-    margin-inline-start: calc(-1 * var(--rtl-lite-marker-width));
+    margin-inline-start: var(--rtl-lite-list-indent);
+
+    &::before {
+      margin-left: 0;
+      margin-inline-start: calc(-1 * var(--rtl-lite-marker-width));
+    }
+  }
+
+  .c-mrkdwn__quote[dir="rtl"] {
+    padding-left: 0;
+    padding-inline-start: var(--rtl-lite-quote-indent);
+
+    &::before {
+      left: auto;
+      inset-inline-start: 0;
+    }
   }
 }
 
-.c-mrkdwn__quote[dir="rtl"] {
-  padding-left: 0;
-  padding-inline-start: var(--rtl-lite-quote-indent);
+/* Left alignment: JS sets data-rtl-lite-align on <html>; lines keep their direction but start on the left. */
+:root[data-rtl-lite-align="left"] {
+  :is([data-rtl-lite], .ql-editor p) {
+    text-align: left;
+  }
 
-  &::before {
-    left: auto;
-    inset-inline-start: 0;
+  /* An inline marker would follow the RTL line to its right end; floated, it hangs in Slack's left gutter. */
+  .p-rich_text_list > li[dir="rtl"]::before {
+    float: left;
   }
 }
 

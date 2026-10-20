@@ -1,0 +1,39 @@
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  font:
+    14px/1.4 system-ui,
+    sans-serif;
+}
+
+fieldset {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0 0 12px;
+  font-weight: 600;
+}
+
+.option {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+
+  & input {
+    margin: 3px 0 0;
+  }
+
+  & p {
+    margin: 4px 0 0;
+    opacity: 0.75;
+  }
+}

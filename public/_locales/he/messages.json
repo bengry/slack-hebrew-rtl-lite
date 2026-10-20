@@ -4,5 +4,26 @@
   },
   "extensionDescription": {
     "message": "תמיכה קלה בעברית מימין לשמאל עבור Slack."
+  },
+  "languageCode": {
+    "message": "he"
+  },
+  "textDirection": {
+    "message": "rtl"
+  },
+  "alignmentLegend": {
+    "message": "יישור טקסט"
+  },
+  "alignmentAutoLabel": {
+    "message": "אוטומטי"
+  },
+  "alignmentAutoDescription": {
+    "message": "כל שורה מיושרת לצד שלה: שורות מימין לשמאל לימין, ושורות משמאל לימין לשמאל."
+  },
+  "alignmentLeftLabel": {
+    "message": "שמאל"
+  },
+  "alignmentLeftDescription": {
+    "message": "שורות בעברית ובשפות אחרות שנכתבות מימין לשמאל נשארות בכיוון הקריאה שלהן, אבל מיושרות לצד שמאל כמו שאר הטקסט ב-Slack."
   }
 }

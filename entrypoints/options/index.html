@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Slack Hebrew RTL Lite</title>
+  </head>
+  <body>
+    <fieldset>
+      <legend data-message="alignmentLegend"></legend>
+      <div class="option">
+        <input
+          type="radio"
+          name="alignment"
+          id="alignment-auto"
+          value="auto"
+          aria-describedby="alignment-auto-description"
+        />
+        <div>
+          <label for="alignment-auto" data-message="alignmentAutoLabel"></label>
+          <p id="alignment-auto-description" data-message="alignmentAutoDescription"></p>
+        </div>
+      </div>
+      <div class="option">
+        <input
+          type="radio"
+          name="alignment"
+          id="alignment-left"
+          value="left"
+          aria-describedby="alignment-left-description"
+        />
+        <div>
+          <label for="alignment-left" data-message="alignmentLeftLabel"></label>
+          <p id="alignment-left-description" data-message="alignmentLeftDescription"></p>
+        </div>
+      </div>
+    </fieldset>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

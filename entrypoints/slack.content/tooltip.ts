@@ -1,5 +1,4 @@
-const IS_MAC = /Mac/i.test(navigator.platform);
-const CTRL_KEY = IS_MAC ? "⌃" : "Ctrl";
+import { CTRL_KEY } from "../../utils/keys";
 
 let current: HTMLElement | undefined;
 

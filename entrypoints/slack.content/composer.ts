@@ -1,3 +1,4 @@
+import { browser } from "wxt/browser";
 import type { ContentScriptContext } from "wxt/utils/content-script-context";
 import type { Direction } from "./direction";
 import { applyAutoMarks, COMPOSER, forcedDirection, lineAt, toggleMark } from "./marks";
@@ -65,8 +66,8 @@ function createButtons(): HTMLElement {
   separator.className = "p-composer__separator";
   group.append(
     separator,
-    createButton("ltr", "Left-to-right line", "["),
-    createButton("rtl", "Right-to-left line", "]"),
+    createButton("ltr", browser.i18n.getMessage("ltrButtonLabel"), "["),
+    createButton("rtl", browser.i18n.getMessage("rtlButtonLabel"), "]"),
   );
   return group;
 }

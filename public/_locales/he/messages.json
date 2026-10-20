@@ -25,5 +25,23 @@
   },
   "alignmentLeftDescription": {
     "message": "שורות בעברית ובשפות אחרות שנכתבות מימין לשמאל נשארות בכיוון הקריאה שלהן, אבל מיושרות לצד שמאל כמו שאר הטקסט ב-Slack."
+  },
+  "ltrButtonLabel": {
+    "message": "שורה משמאל לימין"
+  },
+  "rtlButtonLabel": {
+    "message": "שורה מימין לשמאל"
+  },
+  "shortcutsHeading": {
+    "message": "קיצורי מקלדת"
+  },
+  "ltrShortcutDescription": {
+    "message": "בתיבת הכתיבה, הופך את השורה של הסמן לשורה משמאל לימין. לחיצה נוספת מחזירה למצב אוטומטי."
+  },
+  "rtlShortcutDescription": {
+    "message": "בתיבת הכתיבה, הופך את השורה של הסמן לשורה מימין לשמאל. לחיצה נוספת מחזירה למצב אוטומטי."
+  },
+  "previewHeading": {
+    "message": "תצוגה מקדימה"
   }
 }

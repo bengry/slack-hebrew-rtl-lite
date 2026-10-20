@@ -1,5 +1,6 @@
 import "./style.css";
 import { browser } from "wxt/browser";
+import { CTRL_KEY } from "../../utils/keys";
 import { ALIGNMENTS, alignment } from "../../utils/settings";
 
 // WXT types getMessage() per known message name; its last overload accepts any of them.
@@ -13,6 +14,7 @@ document.documentElement.dir = browser.i18n.getMessage("textDirection");
 for (const element of document.querySelectorAll<HTMLElement>("[data-message]")) {
   element.textContent = browser.i18n.getMessage(element.dataset.message as MessageName);
 }
+for (const key of document.querySelectorAll("[data-ctrl-key]")) key.textContent = CTRL_KEY;
 
 const radios = document.querySelectorAll<HTMLInputElement>('input[name="alignment"]');
 void alignment.getValue().then((value) => {

@@ -8,33 +8,70 @@
   <body>
     <fieldset>
       <legend data-message="alignmentLegend"></legend>
-      <div class="option">
+      <!-- The whole row is the label, so a click anywhere selects; aria-labelledby keeps the name to the title. -->
+      <label class="option">
         <input
           type="radio"
           name="alignment"
-          id="alignment-auto"
           value="auto"
+          aria-labelledby="alignment-auto-label"
           aria-describedby="alignment-auto-description"
         />
         <div>
-          <label for="alignment-auto" data-message="alignmentAutoLabel"></label>
+          <span id="alignment-auto-label" data-message="alignmentAutoLabel"></span>
           <p id="alignment-auto-description" data-message="alignmentAutoDescription"></p>
         </div>
-      </div>
-      <div class="option">
+      </label>
+      <label class="option">
         <input
           type="radio"
           name="alignment"
-          id="alignment-left"
           value="left"
+          aria-labelledby="alignment-left-label"
           aria-describedby="alignment-left-description"
         />
         <div>
-          <label for="alignment-left" data-message="alignmentLeftLabel"></label>
+          <span id="alignment-left-label" data-message="alignmentLeftLabel"></span>
           <p id="alignment-left-description" data-message="alignmentLeftDescription"></p>
         </div>
-      </div>
+      </label>
     </fieldset>
+    <section aria-labelledby="preview-heading">
+      <h2 id="preview-heading" data-message="previewHeading"></h2>
+      <!-- Mimics a Slack channel; Slack's layout stays left-to-right, only the text lines flip. -->
+      <div class="slack" dir="ltr" aria-hidden="true">
+        <div class="slack-header"># deploys</div>
+        <div class="slack-message">
+          <div class="slack-avatar">NL</div>
+          <div>
+            <div class="slack-meta">
+              <span class="slack-name">Noa Levi</span><span class="slack-time">10:42 AM</span>
+            </div>
+            <div class="slack-body">
+              <p dir="rtl">הדיפלוי ל-staging עבר בהצלחה 🎉</p>
+              <p dir="ltr">Release notes are in the thread.</p>
+              <ul>
+                <li dir="rtl">לבדוק את מסך ה-login</li>
+                <li dir="ltr">Update the changelog</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section aria-labelledby="shortcuts-heading">
+      <h2 id="shortcuts-heading" data-message="shortcutsHeading"></h2>
+      <dl>
+        <dt>
+          <span class="keys" dir="ltr"><kbd data-ctrl-key>Ctrl</kbd><kbd>[</kbd></span>
+        </dt>
+        <dd data-message="ltrShortcutDescription"></dd>
+        <dt>
+          <span class="keys" dir="ltr"><kbd data-ctrl-key>Ctrl</kbd><kbd>]</kbd></span>
+        </dt>
+        <dd data-message="rtlShortcutDescription"></dd>
+      </dl>
+    </section>
     <script type="module" src="./main.ts"></script>
   </body>
 </html>

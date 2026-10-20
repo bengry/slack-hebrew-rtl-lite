@@ -27,5 +27,23 @@
   },
   "alignmentLeftDescription": {
     "message": "Hebrew and other right-to-left lines keep their reading direction but line up on the left edge, like the rest of Slack's text."
+  },
+  "ltrButtonLabel": {
+    "message": "Left-to-right line"
+  },
+  "rtlButtonLabel": {
+    "message": "Right-to-left line"
+  },
+  "shortcutsHeading": {
+    "message": "Keyboard shortcuts"
+  },
+  "ltrShortcutDescription": {
+    "message": "In the composer, make the caret's line left-to-right. Press again to return to automatic."
+  },
+  "rtlShortcutDescription": {
+    "message": "In the composer, make the caret's line right-to-left. Press again to return to automatic."
+  },
+  "previewHeading": {
+    "message": "Preview"
   }
 }

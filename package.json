@@ -10,7 +10,8 @@
     "format:check": "vp fmt --check .",
     "zip": "wxt zip",
     "test": "vp test run",
-    "postinstall": "wxt prepare"
+    "postinstall": "wxt prepare",
+    "submit": "sh scripts/submit.sh"
   },
   "devDependencies": {
     "@vitest/browser-playwright": "5.0.5",

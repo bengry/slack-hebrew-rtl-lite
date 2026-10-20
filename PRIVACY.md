@@ -1,6 +1,6 @@
 # Privacy Policy - Slack Hebrew RTL Lite
 
-Effective: September 28, 2026
+Effective: October 20, 2026
 
 Slack Hebrew RTL Lite reads text on Slack pages in your browser to determine how to display right-to-left and left-to-right lines. It changes the display of messages and adds direction buttons and shortcuts to the composer.
 
@@ -8,7 +8,7 @@ When you press Enter to send, it automatically inserts an invisible Unicode dire
 
 When you copy selected messages, it removes invisible direction marks at the start of lines from what you copy.
 
-No data leaves your browser because of this extension. It does not send page content to a developer-operated server or use analytics. Nothing is sold, shared, or transferred to third parties. It stores only the extension's settings, on your device in the browser's local extension storage. No messages or identifiers are saved on your device or elsewhere. Slack's own handling of messages remains governed by Slack.
+No data leaves your browser because of this extension. It does not send page content to a developer-operated server or use analytics. Nothing is sold, shared, or transferred to third parties. It stores only the extension's settings (the text alignment choice) in the browser's extension storage. If browser sync is on, the browser copies these settings to your other signed-in browsers through your browser account. No messages or identifiers are saved on your device or elsewhere. Slack's own handling of messages remains governed by Slack.
 
 Changes to this policy are published in this file's commit history.
 

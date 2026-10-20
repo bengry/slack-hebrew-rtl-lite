@@ -11,8 +11,10 @@ for (const element of document.querySelectorAll<HTMLElement>("[data-message]")) 
   element.textContent = browser.i18n.getMessage(element.dataset.message ?? "");
 }
 
-const checkbox = document.getElementById("align-left") as HTMLInputElement;
-void alignLeft.getValue().then((value) => {
-  checkbox.checked = value;
-});
-checkbox.addEventListener("change", () => void alignLeft.setValue(checkbox.checked));
+const checkbox = document.querySelector<HTMLInputElement>("#align-left");
+if (checkbox) {
+  void alignLeft.getValue().then((value) => {
+    checkbox.checked = value;
+  });
+  checkbox.addEventListener("change", () => void alignLeft.setValue(checkbox.checked));
+}

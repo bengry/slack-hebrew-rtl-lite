@@ -13,10 +13,19 @@
     "message": "ltr",
     "description": "Text direction of this translation, ltr or rtl, set as the options page's dir."
   },
-  "alignLeftLabel": {
-    "message": "Align right-to-left text to the left"
+  "alignmentLegend": {
+    "message": "Text alignment"
   },
-  "alignLeftDescription": {
+  "alignmentAutoLabel": {
+    "message": "Automatic"
+  },
+  "alignmentAutoDescription": {
+    "message": "Each line aligns to its own side: right-to-left lines on the right, left-to-right lines on the left."
+  },
+  "alignmentLeftLabel": {
+    "message": "Left"
+  },
+  "alignmentLeftDescription": {
     "message": "Hebrew and other right-to-left lines keep their reading direction but line up on the left edge, like the rest of Slack's text."
   }
 }

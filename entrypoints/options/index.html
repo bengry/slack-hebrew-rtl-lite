@@ -6,13 +6,35 @@
     <title>Slack Hebrew RTL Lite</title>
   </head>
   <body>
-    <div class="setting">
-      <input type="checkbox" id="align-left" aria-describedby="align-left-description" />
-      <div>
-        <label for="align-left" data-message="alignLeftLabel"></label>
-        <p id="align-left-description" data-message="alignLeftDescription"></p>
+    <fieldset>
+      <legend data-message="alignmentLegend"></legend>
+      <div class="option">
+        <input
+          type="radio"
+          name="alignment"
+          id="alignment-auto"
+          value="auto"
+          aria-describedby="alignment-auto-description"
+        />
+        <div>
+          <label for="alignment-auto" data-message="alignmentAutoLabel"></label>
+          <p id="alignment-auto-description" data-message="alignmentAutoDescription"></p>
+        </div>
       </div>
-    </div>
+      <div class="option">
+        <input
+          type="radio"
+          name="alignment"
+          id="alignment-left"
+          value="left"
+          aria-describedby="alignment-left-description"
+        />
+        <div>
+          <label for="alignment-left" data-message="alignmentLeftLabel"></label>
+          <p id="alignment-left-description" data-message="alignmentLeftDescription"></p>
+        </div>
+      </div>
+    </fieldset>
     <script type="module" src="./main.ts"></script>
   </body>
 </html>

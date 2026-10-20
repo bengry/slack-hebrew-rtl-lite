@@ -1,6 +1,6 @@
 import "./style.css";
 import { browser } from "wxt/browser";
-import { alignment } from "../../utils/settings";
+import { ALIGNMENTS, alignment } from "../../utils/settings";
 
 // WXT types getMessage() per known message name; its last overload accepts any of them.
 type MessageName = Parameters<typeof browser.i18n.getMessage>[0];
@@ -14,13 +14,11 @@ for (const element of document.querySelectorAll<HTMLElement>("[data-message]")) 
   element.textContent = browser.i18n.getMessage(element.dataset.message as MessageName);
 }
 
-const checkbox = document.querySelector<HTMLInputElement>("#align-left");
-if (checkbox) {
-  void alignment.getValue().then((value) => {
-    checkbox.checked = value === "left";
-  });
-  checkbox.addEventListener(
-    "change",
-    () => void alignment.setValue(checkbox.checked ? "left" : "auto"),
-  );
+const radios = document.querySelectorAll<HTMLInputElement>('input[name="alignment"]');
+void alignment.getValue().then((value) => {
+  for (const radio of radios) radio.checked = radio.value === value;
+});
+for (const radio of radios) {
+  const value = ALIGNMENTS.find((option) => option === radio.value);
+  if (value) radio.addEventListener("change", () => void alignment.setValue(value));
 }

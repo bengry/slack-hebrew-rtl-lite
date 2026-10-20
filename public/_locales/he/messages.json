@@ -11,10 +11,19 @@
   "textDirection": {
     "message": "rtl"
   },
-  "alignLeftLabel": {
-    "message": "יישור טקסט מימין לשמאל לצד שמאל"
+  "alignmentLegend": {
+    "message": "יישור טקסט"
   },
-  "alignLeftDescription": {
+  "alignmentAutoLabel": {
+    "message": "אוטומטי"
+  },
+  "alignmentAutoDescription": {
+    "message": "כל שורה מיושרת לצד שלה: שורות מימין לשמאל לימין, ושורות משמאל לימין לשמאל."
+  },
+  "alignmentLeftLabel": {
+    "message": "שמאל"
+  },
+  "alignmentLeftDescription": {
     "message": "שורות בעברית ובשפות אחרות שנכתבות מימין לשמאל נשארות בכיוון הקריאה שלהן, אבל מיושרות לצד שמאל כמו שאר הטקסט ב-Slack."
   }
 }

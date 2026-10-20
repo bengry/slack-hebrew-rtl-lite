@@ -10,17 +10,26 @@ body {
     sans-serif;
 }
 
-.setting {
+fieldset {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  padding: 0 0 12px;
+  font-weight: 600;
+}
+
+.option {
   display: flex;
   gap: 8px;
   align-items: start;
 
   & input {
     margin: 3px 0 0;
-  }
-
-  & label {
-    font-weight: 600;
   }
 
   & p {

@@ -1,0 +1,30 @@
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  padding: 16px;
+  font:
+    14px/1.4 system-ui,
+    sans-serif;
+}
+
+.setting {
+  display: flex;
+  gap: 8px;
+  align-items: start;
+
+  & input {
+    margin: 3px 0 0;
+  }
+
+  & label {
+    font-weight: 600;
+  }
+
+  & p {
+    margin: 4px 0 0;
+    opacity: 0.75;
+  }
+}

@@ -4,5 +4,19 @@
   },
   "extensionDescription": {
     "message": "Lightweight right-to-left Hebrew support for Slack."
+  },
+  "languageCode": {
+    "message": "en",
+    "description": "Language tag of this translation, set as the options page's lang."
+  },
+  "textDirection": {
+    "message": "ltr",
+    "description": "Text direction of this translation, ltr or rtl, set as the options page's dir."
+  },
+  "alignLeftLabel": {
+    "message": "Align right-to-left text to the left"
+  },
+  "alignLeftDescription": {
+    "message": "Hebrew and other right-to-left lines keep their reading direction but line up on the left edge, like the rest of Slack's text."
   }
 }

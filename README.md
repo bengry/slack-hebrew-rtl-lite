@@ -68,7 +68,7 @@ vp fmt .
 - `entrypoints/slack.content/marks.ts` inserts and removes direction marks in the composer through `execCommand`.
 - `entrypoints/slack.content/composer.ts` handles the shortcuts, the toolbar buttons and the on-send hook.
 - `entrypoints/slack.content/copy.ts` strips direction marks when copying messages.
-- `entrypoints/slack.content/align.ts` mirrors the align-left setting onto `<html>` for the stylesheet.
+- `entrypoints/slack.content/align.ts` mirrors the alignment setting onto `<html>` for the stylesheet.
 - `entrypoints/options/` is the options page; `utils/settings.ts` defines the stored settings it shares with the content script.
 - `entrypoints/slack.content/style.css` holds the per-line, list, quote, island and composer rules.
 - `entrypoints/slack.content/direction.test.ts`, `render.test.ts` and `marks.test.ts` cover the direction rule, message/composer rendering and mark insertion (`vp test`).

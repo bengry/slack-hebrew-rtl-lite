@@ -1,15 +1,15 @@
 import type { ContentScriptContext } from "wxt/utils/content-script-context";
-import { alignLeft } from "../../utils/settings";
+import { type Alignment, alignment } from "../../utils/settings";
 
-// The stylesheet keys left alignment off this attribute on <html>.
-const ALIGN_LEFT_ATTRIBUTE = "data-rtl-lite-align-left";
+// The stylesheet keys alignment off this attribute on <html>.
+const ALIGN_ATTRIBUTE = "data-rtl-lite-align";
 
-/** Mirrors the align-left setting onto <html> and keeps it in sync, so open tabs follow a change without a reload. */
+/** Mirrors the alignment setting onto <html> and keeps it in sync, so open tabs follow a change without a reload. */
 export function syncAlignment(ctx: ContentScriptContext): void {
-  ctx.onInvalidated(alignLeft.watch(applyAlignment));
-  void alignLeft.getValue().then(applyAlignment);
+  ctx.onInvalidated(alignment.watch(applyAlignment));
+  void alignment.getValue().then(applyAlignment);
 }
 
-function applyAlignment(left: boolean): void {
-  document.documentElement.toggleAttribute(ALIGN_LEFT_ATTRIBUTE, left);
+function applyAlignment(value: Alignment): void {
+  document.documentElement.setAttribute(ALIGN_ATTRIBUTE, value);
 }

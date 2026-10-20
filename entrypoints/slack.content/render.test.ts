@@ -300,16 +300,49 @@ describe("rich message: lists, quote, code, mention", () => {
   });
 });
 
-describe("align-left setting", () => {
-  const ALIGN_LEFT_ATTRIBUTE = "data-rtl-lite-align-left";
+const ALIGN_ATTRIBUTE = "data-rtl-lite-align";
+
+/** Renders a one-item Hebrew bullet list and a Hebrew quote. */
+function renderListAndQuote(): { item: HTMLElement; quote: HTMLElement } {
+  const block = document.createElement("div");
+  block.className = "p-rich_text_block";
+  const list = document.createElement("ul");
+  list.className = "p-rich_text_list p-rich_text_list__bullet";
+  const item = document.createElement("li");
+  item.textContent = "פריט ראשון";
+  list.append(item);
+  const quote = document.createElement("blockquote");
+  quote.className = "c-mrkdwn__quote";
+  quote.textContent = "ציטוט בעברית לבדיקה";
+  block.append(list, quote);
+  root.append(block);
+  renderWithin(root);
+  return { item, quote };
+}
+
+describe("auto alignment", () => {
+  afterEach(() => {
+    document.documentElement.removeAttribute(ALIGN_ATTRIBUTE);
+  });
+
+  it("RTL list items and quotes still move the marker and bar to their right once the setting loads", () => {
+    document.documentElement.setAttribute(ALIGN_ATTRIBUTE, "auto");
+    const { item, quote } = renderListAndQuote();
+
+    expect(getComputedStyle(item).marginRight).toBe("28px");
+    expect(getComputedStyle(quote).paddingRight).toBe("16px");
+  });
+});
+
+describe("left alignment", () => {
   const T2 = ["סיכום הפגישה:", "We agreed to ship on Monday, pending QA.", "תודה לכולם!"];
 
   beforeEach(() => {
-    document.documentElement.toggleAttribute(ALIGN_LEFT_ATTRIBUTE, true);
+    document.documentElement.setAttribute(ALIGN_ATTRIBUTE, "left");
   });
 
   afterEach(() => {
-    document.documentElement.toggleAttribute(ALIGN_LEFT_ATTRIBUTE, false);
+    document.documentElement.removeAttribute(ALIGN_ATTRIBUTE);
   });
 
   /** A line's rendered direction from the order of its first and last characters; asserts it starts at the left edge. */
@@ -361,19 +394,7 @@ describe("align-left setting", () => {
   });
 
   it("RTL list items and quotes keep Slack's left-side layout", () => {
-    const block = document.createElement("div");
-    block.className = "p-rich_text_block";
-    const list = document.createElement("ul");
-    list.className = "p-rich_text_list p-rich_text_list__bullet";
-    const item = document.createElement("li");
-    item.textContent = "פריט ראשון";
-    list.append(item);
-    const quote = document.createElement("blockquote");
-    quote.className = "c-mrkdwn__quote";
-    quote.textContent = "ציטוט בעברית לבדיקה";
-    block.append(list, quote);
-    root.append(block);
-    renderWithin(root);
+    const { item, quote } = renderListAndQuote();
 
     expect(item.dir).toBe("rtl");
     expect(getComputedStyle(item).marginRight).toBe("0px");

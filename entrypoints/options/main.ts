@@ -1,6 +1,6 @@
 import "./style.css";
 import { browser } from "wxt/browser";
-import { alignLeft } from "../../utils/settings";
+import { alignment } from "../../utils/settings";
 
 // __MSG_ placeholders only work in the manifest and CSS, so the page fills in its strings here.
 // lang and dir come from the translation itself: getUILanguage() and @@bidi_dir follow the browser's UI language,
@@ -13,8 +13,11 @@ for (const element of document.querySelectorAll<HTMLElement>("[data-message]")) 
 
 const checkbox = document.querySelector<HTMLInputElement>("#align-left");
 if (checkbox) {
-  void alignLeft.getValue().then((value) => {
-    checkbox.checked = value;
+  void alignment.getValue().then((value) => {
+    checkbox.checked = value === "left";
   });
-  checkbox.addEventListener("change", () => void alignLeft.setValue(checkbox.checked));
+  checkbox.addEventListener(
+    "change",
+    () => void alignment.setValue(checkbox.checked ? "left" : "auto"),
+  );
 }

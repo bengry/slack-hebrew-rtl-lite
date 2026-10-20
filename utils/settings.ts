@@ -1,4 +1,6 @@
 import { storage } from "wxt/utils/storage";
 
-/** Right-to-left text keeps its direction but lines up on the left edge, like the rest of Slack's text. */
-export const alignLeft = storage.defineItem<boolean>("local:alignLeft", { fallback: false });
+/** "auto" aligns each line to its own direction's side; "left" lines everything up on the left, keeping its direction. */
+export type Alignment = "auto" | "left";
+
+export const alignment = storage.defineItem<Alignment>("local:alignment", { fallback: "auto" });

@@ -15,8 +15,8 @@
   unicode-bidi: plaintext;
 }
 
-/* Lists and quotes: marker and bar follow the item's side. */
-.p-rich_text_list > li[dir="rtl"] {
+/* Lists and quotes: marker and bar follow the item's side. Align-left keeps Slack's own left-side layout instead. */
+:root:not([data-rtl-lite-align-left]) .p-rich_text_list > li[dir="rtl"] {
   margin-left: 0;
   margin-inline-start: var(--rtl-lite-list-indent);
 
@@ -26,7 +26,7 @@
   }
 }
 
-.c-mrkdwn__quote[dir="rtl"] {
+:root:not([data-rtl-lite-align-left]) .c-mrkdwn__quote[dir="rtl"] {
   padding-left: 0;
   padding-inline-start: var(--rtl-lite-quote-indent);
 
@@ -34,6 +34,16 @@
     left: auto;
     inset-inline-start: 0;
   }
+}
+
+/* Align-left setting: JS sets data-rtl-lite-align-left on <html>; lines keep their direction but start on the left. */
+:root[data-rtl-lite-align-left] :is([data-rtl-lite], .ql-editor p) {
+  text-align: left;
+}
+
+/* An inline marker would follow the RTL line to its right end; floated, it hangs in Slack's left gutter. */
+:root[data-rtl-lite-align-left] .p-rich_text_list > li[dir="rtl"]::before {
+  float: left;
 }
 
 /* Islands. */

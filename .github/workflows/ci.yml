@@ -34,7 +34,7 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Lint and format check
-        run: pnpm exec vp check entrypoints vite.config.ts wxt.config.ts
+        run: pnpm exec vp check entrypoints utils vite.config.ts wxt.config.ts
 
       - name: Test
         run: pnpm exec vp test run

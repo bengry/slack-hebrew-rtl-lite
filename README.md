@@ -13,6 +13,7 @@ This is a WXT browser extension for Chromium browsers (Chrome, Edge) that gives 
 - Direction marks: a line that starts with Latin but is mostly Hebrew (for example `PR #123 עודכן`) gets an invisible RLM on send, so receivers see it right-to-left. `Ctrl+[` forces the caret's line LTR, `Ctrl+]` forces it RTL; press again to return to auto. The LTR / RTL buttons in the composer toolbar do the same.
 - Copying from messages strips the line-leading direction marks.
 - Search snippets and Saved/Later previews get one direction per preview.
+- Optional left alignment (extension options page): right-to-left lines keep their direction but line up on the left edge, like the rest of Slack's text. Lists and quotes keep Slack's left-side bullets and quote bar.
 
 ## Development
 
@@ -67,6 +68,8 @@ vp fmt .
 - `entrypoints/slack.content/marks.ts` inserts and removes direction marks in the composer through `execCommand`.
 - `entrypoints/slack.content/composer.ts` handles the shortcuts, the toolbar buttons and the on-send hook.
 - `entrypoints/slack.content/copy.ts` strips direction marks when copying messages.
+- `entrypoints/slack.content/align.ts` mirrors the align-left setting onto `<html>` for the stylesheet.
+- `entrypoints/options/` is the options page; `utils/settings.ts` defines the stored settings it shares with the content script.
 - `entrypoints/slack.content/style.css` holds the per-line, list, quote, island and composer rules.
 - `entrypoints/slack.content/direction.test.ts`, `render.test.ts` and `marks.test.ts` cover the direction rule, message/composer rendering and mark insertion (`vp test`).
 - `public/_locales/` contains localized manifest strings.

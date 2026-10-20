@@ -8,7 +8,7 @@ When you press Enter to send, it automatically inserts an invisible Unicode dire
 
 When you copy selected messages, it removes invisible direction marks at the start of lines from what you copy.
 
-No data leaves your browser because of this extension. It does not send page content to a developer-operated server or use analytics. Nothing is sold, shared, or transferred to third parties. It stores nothing: no messages, settings, or identifiers are saved on your device or elsewhere. Slack's own handling of messages remains governed by Slack.
+No data leaves your browser because of this extension. It does not send page content to a developer-operated server or use analytics. Nothing is sold, shared, or transferred to third parties. It stores only its settings: no messages or identifiers are saved on your device or elsewhere. Slack's own handling of messages remains governed by Slack.
 
 Changes to this policy are published in this file's commit history.
 
